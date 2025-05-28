@@ -83,8 +83,10 @@ fun BottomNavigationBar(
         exit = slideOutVertically(targetOffsetY = { it })
     ) {
         NavigationBar(
-            modifier = Modifier.navigationBarsPadding(),
-            tonalElevation = 8.dp,
+            modifier = Modifier
+                .navigationBarsPadding()
+                .fillMaxWidth(),
+            tonalElevation = 0.dp,
             containerColor = MaterialTheme.colorScheme.primaryContainer
         ) {
             navItems.forEach { item ->

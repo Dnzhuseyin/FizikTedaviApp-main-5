@@ -67,6 +67,8 @@ fun FizikTedaviApp() {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         contentWindowInsets = androidx.compose.foundation.layout.WindowInsets(0, 0, 0, 0), // İnset sorununu düzeltmek için
+        containerColor = MaterialTheme.colorScheme.background, // Arka plan rengini tema ile uyumlu yap
+        contentColor = MaterialTheme.colorScheme.onBackground, // İçerik rengini tema ile uyumlu yap
         bottomBar = {
             if (bottomBarVisible.value) {
                 BottomNavigationBar(
@@ -78,14 +80,20 @@ fun FizikTedaviApp() {
     ) { innerPadding ->
         // Calculate appropriate padding based on whether bottom bar is shown
         val contentModifier = if (bottomBarVisible.value) {
-            Modifier.padding(innerPadding)
-        } else {
-            // Only apply top, start, end padding when bottom bar is hidden
+            // Bottom bar var ise, içeriğin altında boşluk bırakmadan sadece gerekli padding'leri uygula
             Modifier.padding(
                 top = innerPadding.calculateTopPadding(),
                 start = 16.dp,
                 end = 16.dp,
-                bottom = 0.dp
+                bottom = innerPadding.calculateBottomPadding()
+            )
+        } else {
+            // Bottom bar yok ise, sadece gerekli padding'leri uygula
+            Modifier.padding(
+                top = innerPadding.calculateTopPadding(),
+                start = 16.dp,
+                end = 16.dp,
+                bottom = 16.dp // Alt kısımda biraz padding ekleyelim
             )
         }
         
