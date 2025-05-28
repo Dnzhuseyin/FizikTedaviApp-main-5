@@ -66,7 +66,7 @@ fun RegisterScreen(navController: NavController) {
     BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
-            .background(SurfaceLight)
+            .background(MaterialTheme.colorScheme.surface)
     ) {
         val maxHeight = this.maxHeight
         val isCompactHeight = maxHeight < 600.dp

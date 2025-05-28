@@ -101,7 +101,15 @@ val TextSecondary = md_theme_light_onSurfaceVariant
 val TextHint = md_theme_light_outline
 val DarkBlue = md_theme_light_primary // 0xFF4361EE - Modern Mavi
 val LightBlue = md_theme_light_primaryContainer // 0xFFDDE2FF - Açık Mavi
+val MediumBlue = md_theme_light_tertiary // 0xFF38B6FF - Orta Mavi
+
+// Yeşil tonları
+val DarkGreen = SuccessGreen.copy(alpha = 0.8f) // Koyu yeşil
 val MediumGreen = SuccessGreen // 0xFF4CAF50 - Yeşil
+val LightGreen = SuccessGreen.copy(alpha = 0.6f) // Açık yeşil
+
+// Uyarı renkleri
+val WarningYellow = WarningOrange // 0xFFFF9800 - Uyarı rengi
 val ErrorRed = md_theme_light_error // 0xFFE53935 - Kırmızı
 
 @Composable
