@@ -91,8 +91,9 @@ fun BottomNavigationBar(
         exit = slideOutVertically(targetOffsetY = { it })
     ) {
         NavigationBar(
-            modifier = Modifier.navigationBarsPadding(),
-            tonalElevation = 8.dp
+            modifier = Modifier,
+            tonalElevation = 8.dp,
+            containerColor = MaterialTheme.colorScheme.surface
         ) {
             navItems.forEach { item ->
                 val selected = currentDestination?.hierarchy?.any { it.route == item.route } == true

@@ -63,11 +63,14 @@ fun FizikTedaviApp() {
     // Use the scaffold for consistent layout with bottom navigation
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        contentWindowInsets = androidx.compose.foundation.layout.WindowInsets(0, 0, 0, 0), // İnset sorununu düzeltmek için
         bottomBar = {
-            BottomNavigationBar(
-                navController = navController,
-                visible = bottomBarVisible.value
-            )
+            if (bottomBarVisible.value) {
+                BottomNavigationBar(
+                    navController = navController,
+                    visible = true
+                )
+            }
         }
     ) { innerPadding ->
         // Calculate appropriate padding based on whether bottom bar is shown

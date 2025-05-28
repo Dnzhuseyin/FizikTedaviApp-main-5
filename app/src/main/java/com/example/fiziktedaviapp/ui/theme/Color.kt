@@ -2,37 +2,80 @@ package com.example.fiziktedaviapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Primary brand colors
-val Primary = Color(0xFF1E65A7) // Dark blue - main brand color
-val PrimaryVariant = Color(0xFF0D4A8A) // Darker blue for emphasis
-val PrimaryLight = Color(0xFF87CEFA) // Light blue for backgrounds, etc.
+// Modern Material You inspired color palette
 
-// Secondary colors
-val Secondary = Color(0xFF2E8B57) // Dark green
-val SecondaryVariant = Color(0xFF1C6E40) // Darker green
-val SecondaryLight = Color(0xFF98FB98) // Light green
+// Primary colors - Modern teal/cyan palette
+val md_theme_light_primary = Color(0xFF006C51)
+val md_theme_light_onPrimary = Color(0xFFFFFFFF)
+val md_theme_light_primaryContainer = Color(0xFF85F8D3)
+val md_theme_light_onPrimaryContainer = Color(0xFF002116)
 
-// Accent colors
-val Accent = Color(0xFF4682B4) // Medium blue - for important UI elements
+// Secondary colors - Deep purple accents
+val md_theme_light_secondary = Color(0xFF6750A4)
+val md_theme_light_onSecondary = Color(0xFFFFFFFF)
+val md_theme_light_secondaryContainer = Color(0xFFE8DDFF)
+val md_theme_light_onSecondaryContainer = Color(0xFF22005D)
 
-// Feedback colors
-val Success = Color(0xFF3CB371) // Medium green - success messages
-val Warning = Color(0xFFFFC107) // Yellow - warning messages
-val Error = Color(0xFFE53935) // Brighter red for better contrast - error messages
-val Info = Color(0xFF2196F3) // Information blue
+// Tertiary colors - Vibrant coral for highlights
+val md_theme_light_tertiary = Color(0xFFEF5350)
+val md_theme_light_onTertiary = Color(0xFFFFFFFF)
+val md_theme_light_tertiaryContainer = Color(0xFFFFDAD7)
+val md_theme_light_onTertiaryContainer = Color(0xFF410100)
 
-// Background and surface colors
-val Background = Color(0xFFF8FCFF) // Very light blue tinted background
-val Surface = Color(0xFFFFFFFF) // Pure white surface
-val SurfaceVariant = Color(0xFFF5F9FC) // Slight off-white for cards, etc.
+// Error colors
+val md_theme_light_error = Color(0xFFBA1A1A)
+val md_theme_light_errorContainer = Color(0xFFFFDAD6)
+val md_theme_light_onError = Color(0xFFFFFFFF)
+val md_theme_light_onErrorContainer = Color(0xFF410002)
 
-// Text colors
-val TextPrimary = Color(0xFF212121) // Nearly black - improved contrast
-val TextSecondary = Color(0xFF757575) // Medium gray
-val TextHint = Color(0xFFAAAAAA) // Light gray for hints/placeholders
-val TextOnPrimary = Color(0xFFFFFFFF) // White text on primary color
-val TextOnSecondary = Color(0xFFFFFFFF) // White text on secondary color
+// Background colors
+val md_theme_light_background = Color(0xFFFAFCFF)
+val md_theme_light_onBackground = Color(0xFF001F2A)
+val md_theme_light_surface = Color(0xFFFAFCFF)
+val md_theme_light_onSurface = Color(0xFF001F2A)
 
-// Disabled states
-val Disabled = Color(0xFFE0E0E0) // Light gray
-val DisabledText = Color(0xFF9E9E9E) // Medium gray for disabled text
+// Surface variants
+val md_theme_light_surfaceVariant = Color(0xFFDCE5DB)
+val md_theme_light_onSurfaceVariant = Color(0xFF404943)
+val md_theme_light_outline = Color(0xFF707973)
+val md_theme_light_inverseOnSurface = Color(0xFFE1F4FF)
+val md_theme_light_inverseSurface = Color(0xFF003547)
+val md_theme_light_inversePrimary = Color(0xFF67DBB7)
+
+// Dark theme
+val md_theme_dark_primary = Color(0xFF67DBB7)
+val md_theme_dark_onPrimary = Color(0xFF00382A)
+val md_theme_dark_primaryContainer = Color(0xFF00513D)
+val md_theme_dark_onPrimaryContainer = Color(0xFF85F8D3)
+
+val md_theme_dark_secondary = Color(0xFFCEBDFF)
+val md_theme_dark_onSecondary = Color(0xFF371E73)
+val md_theme_dark_secondaryContainer = Color(0xFF4F378A)
+val md_theme_dark_onSecondaryContainer = Color(0xFFE8DDFF)
+
+val md_theme_dark_tertiary = Color(0xFFFFB3AE)
+val md_theme_dark_onTertiary = Color(0xFF690200)
+val md_theme_dark_tertiaryContainer = Color(0xFF930300)
+val md_theme_dark_onTertiaryContainer = Color(0xFFFFDAD7)
+
+val md_theme_dark_error = Color(0xFFFFB4AB)
+val md_theme_dark_errorContainer = Color(0xFF93000A)
+val md_theme_dark_onError = Color(0xFF690005)
+val md_theme_dark_onErrorContainer = Color(0xFFFFDAD6)
+
+val md_theme_dark_background = Color(0xFF001F2A)
+val md_theme_dark_onBackground = Color(0xFFBFE9FF)
+val md_theme_dark_surface = Color(0xFF001F2A)
+val md_theme_dark_onSurface = Color(0xFFBFE9FF)
+
+val md_theme_dark_surfaceVariant = Color(0xFF404943)
+val md_theme_dark_onSurfaceVariant = Color(0xFFBFC9C0)
+val md_theme_dark_outline = Color(0xFF8A938D)
+val md_theme_dark_inverseOnSurface = Color(0xFF001F2A)
+val md_theme_dark_inverseSurface = Color(0xFFBFE9FF)
+val md_theme_dark_inversePrimary = Color(0xFF006C51)
+
+// Extra colors for states and feedback
+val Success = Color(0xFF2E7D32)
+val Warning = Color(0xFFFF9800)
+val Info = Color(0xFF0288D1)
