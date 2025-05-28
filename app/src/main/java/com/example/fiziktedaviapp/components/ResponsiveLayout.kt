@@ -97,11 +97,14 @@ fun ResponsivePage(
     }
     
     // ContentPadding'i ekran boyutuna göre ayarla
+    val topPadding = contentPadding.calculateTopPadding() + statusBarPadding
+    val bottomPadding = contentPadding.calculateBottomPadding() + navigationBarPadding
+    
     val finalPadding = PaddingValues(
-        start = contentPadding.calculateStartPadding(LayoutDirection.Ltr) + horizontalPadding,
-        top = contentPadding.calculateTopPadding() + statusBarPadding,
-        end = contentPadding.calculateEndPadding(LayoutDirection.Ltr) + horizontalPadding,
-        bottom = contentPadding.calculateBottomPadding() + navigationBarPadding
+        start = horizontalPadding,
+        top = topPadding,
+        end = horizontalPadding,
+        bottom = bottomPadding
     )
     
     CompositionLocalProvider(LocalScreenSizeClass provides screenSizeClass) {

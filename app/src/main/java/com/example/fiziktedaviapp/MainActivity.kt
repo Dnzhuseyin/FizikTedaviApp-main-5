@@ -75,21 +75,21 @@ fun FizikTedaviApp() {
         }
     ) { innerPadding ->
         // Calculate appropriate padding based on whether bottom bar is shown
-        val contentPadding = if (bottomBarVisible.value) {
-            innerPadding
+        val contentModifier = if (bottomBarVisible.value) {
+            Modifier.padding(innerPadding)
         } else {
-            // Only apply top padding when bottom bar is hidden
-            PaddingValues(
+            // Only apply top, start, end padding when bottom bar is hidden
+            Modifier.padding(
                 top = innerPadding.calculateTopPadding(),
-                start = innerPadding.calculateStartPadding(LayoutDirection.Ltr),
-                end = innerPadding.calculateEndPadding(LayoutDirection.Ltr),
+                start = 16.dp,
+                end = 16.dp,
                 bottom = 0.dp
             )
         }
         
         NavGraph(
             navController = navController,
-            modifier = Modifier.padding(contentPadding)
+            modifier = contentModifier
         )
     }
 }
