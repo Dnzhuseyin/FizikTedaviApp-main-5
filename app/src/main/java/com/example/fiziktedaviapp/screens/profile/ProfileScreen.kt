@@ -63,47 +63,7 @@ fun ProfileScreen(navController: NavController) {
                 }
             )
         },
-        bottomBar = {
-            BottomAppBar(
-                containerColor = SurfaceLight,
-                contentColor = DarkBlue
-            ) {
-                NavigationBar(
-                    containerColor = SurfaceLight,
-                    contentColor = DarkBlue
-                ) {
-                    NavigationBarItem(
-                        selected = false,
-                        onClick = { navController.navigate(Screen.Dashboard.route) {
-                            popUpTo(Screen.Dashboard.route) { inclusive = true }
-                        } },
-                        icon = { Icon(Icons.Outlined.Home, contentDescription = "Ana Sayfa") },
-                        label = { Text("Ana Sayfa") }
-                    )
-                    
-                    NavigationBarItem(
-                        selected = false,
-                        onClick = { navController.navigate(Screen.ExerciseList.route) },
-                        icon = { Icon(Icons.Outlined.FitnessCenter, contentDescription = "Egzersizler") },
-                        label = { Text("Egzersizler") }
-                    )
-                    
-                    NavigationBarItem(
-                        selected = false,
-                        onClick = { navController.navigate(Screen.ExerciseCalendar.route) },
-                        icon = { Icon(Icons.Outlined.CalendarMonth, contentDescription = "Takvim") },
-                        label = { Text("Takvim") }
-                    )
-                    
-                    NavigationBarItem(
-                        selected = true,
-                        onClick = { /* Zaten bu ekrandayız */ },
-                        icon = { Icon(Icons.Filled.Person, contentDescription = "Profil") },
-                        label = { Text("Profil") }
-                    )
-                }
-            }
-        }
+        // BottomBar MainActivity'de yönetiliyor, burada gerekli değil
     ) { innerPadding ->
         Column(
             modifier = Modifier

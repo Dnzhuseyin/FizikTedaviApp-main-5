@@ -2,80 +2,76 @@ package com.example.fiziktedaviapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Modern Material You inspired color palette
-
-// Primary colors - Modern teal/cyan palette
-val md_theme_light_primary = Color(0xFF006C51)
+// Light Theme - Modern Palette 2025
+val md_theme_light_primary = Color(0xFF4361EE)
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)
-val md_theme_light_primaryContainer = Color(0xFF85F8D3)
-val md_theme_light_onPrimaryContainer = Color(0xFF002116)
-
-// Secondary colors - Deep purple accents
-val md_theme_light_secondary = Color(0xFF6750A4)
+val md_theme_light_primaryContainer = Color(0xFFDDE2FF)
+val md_theme_light_onPrimaryContainer = Color(0xFF001257)
+val md_theme_light_secondary = Color(0xFF7B61FF)
 val md_theme_light_onSecondary = Color(0xFFFFFFFF)
-val md_theme_light_secondaryContainer = Color(0xFFE8DDFF)
-val md_theme_light_onSecondaryContainer = Color(0xFF22005D)
-
-// Tertiary colors - Vibrant coral for highlights
-val md_theme_light_tertiary = Color(0xFFEF5350)
+val md_theme_light_secondaryContainer = Color(0xFFE6DEFF)
+val md_theme_light_onSecondaryContainer = Color(0xFF21005E)
+val md_theme_light_tertiary = Color(0xFF38B6FF)
 val md_theme_light_onTertiary = Color(0xFFFFFFFF)
-val md_theme_light_tertiaryContainer = Color(0xFFFFDAD7)
-val md_theme_light_onTertiaryContainer = Color(0xFF410100)
-
-// Error colors
-val md_theme_light_error = Color(0xFFBA1A1A)
+val md_theme_light_tertiaryContainer = Color(0xFFD1E9FF)
+val md_theme_light_onTertiaryContainer = Color(0xFF001E2F)
+val md_theme_light_error = Color(0xFFE53935)
 val md_theme_light_errorContainer = Color(0xFFFFDAD6)
 val md_theme_light_onError = Color(0xFFFFFFFF)
 val md_theme_light_onErrorContainer = Color(0xFF410002)
+val md_theme_light_background = Color(0xFFF8F9FF)
+val md_theme_light_onBackground = Color(0xFF1A1C1E)
+val md_theme_light_surface = Color(0xFFF8F9FF)
+val md_theme_light_onSurface = Color(0xFF1A1C1E)
+val md_theme_light_surfaceVariant = Color(0xFFE1E3EC)
+val md_theme_light_onSurfaceVariant = Color(0xFF44474E)
+val md_theme_light_outline = Color(0xFF74777F)
+val md_theme_light_inverseOnSurface = Color(0xFFF1F0F4)
+val md_theme_light_inverseSurface = Color(0xFF2F3033)
+val md_theme_light_inversePrimary = Color(0xFFB6C4FF)
+val md_theme_light_shadow = Color(0xFF000000)
+val md_theme_light_surfaceTint = Color(0xFF4361EE)
+val md_theme_light_outlineVariant = Color(0xFFC4C6D0)
+val md_theme_light_scrim = Color(0xFF000000)
 
-// Background colors
-val md_theme_light_background = Color(0xFFFAFCFF)
-val md_theme_light_onBackground = Color(0xFF001F2A)
-val md_theme_light_surface = Color(0xFFFAFCFF)
-val md_theme_light_onSurface = Color(0xFF001F2A)
-
-// Surface variants
-val md_theme_light_surfaceVariant = Color(0xFFDCE5DB)
-val md_theme_light_onSurfaceVariant = Color(0xFF404943)
-val md_theme_light_outline = Color(0xFF707973)
-val md_theme_light_inverseOnSurface = Color(0xFFE1F4FF)
-val md_theme_light_inverseSurface = Color(0xFF003547)
-val md_theme_light_inversePrimary = Color(0xFF67DBB7)
-
-// Dark theme
-val md_theme_dark_primary = Color(0xFF67DBB7)
-val md_theme_dark_onPrimary = Color(0xFF00382A)
-val md_theme_dark_primaryContainer = Color(0xFF00513D)
-val md_theme_dark_onPrimaryContainer = Color(0xFF85F8D3)
-
+// Dark Theme - Modern Palette 2025
+val md_theme_dark_primary = Color(0xFFB6C4FF)
+val md_theme_dark_onPrimary = Color(0xFF002188)
+val md_theme_dark_primaryContainer = Color(0xFF3048B5)
+val md_theme_dark_onPrimaryContainer = Color(0xFFDDE2FF)
 val md_theme_dark_secondary = Color(0xFFCEBDFF)
-val md_theme_dark_onSecondary = Color(0xFF371E73)
-val md_theme_dark_secondaryContainer = Color(0xFF4F378A)
-val md_theme_dark_onSecondaryContainer = Color(0xFFE8DDFF)
-
-val md_theme_dark_tertiary = Color(0xFFFFB3AE)
-val md_theme_dark_onTertiary = Color(0xFF690200)
-val md_theme_dark_tertiaryContainer = Color(0xFF930300)
-val md_theme_dark_onTertiaryContainer = Color(0xFFFFDAD7)
-
-val md_theme_dark_error = Color(0xFFFFB4AB)
-val md_theme_dark_errorContainer = Color(0xFF93000A)
+val md_theme_dark_onSecondary = Color(0xFF390694)
+val md_theme_dark_secondaryContainer = Color(0xFF5335CC)
+val md_theme_dark_onSecondaryContainer = Color(0xFFE6DEFF)
+val md_theme_dark_tertiary = Color(0xFF9BCFFF)
+val md_theme_dark_onTertiary = Color(0xFF00344F)
+val md_theme_dark_tertiaryContainer = Color(0xFF004B70)
+val md_theme_dark_onTertiaryContainer = Color(0xFFD1E9FF)
+val md_theme_dark_error = Color(0xFFFF8A85)
+val md_theme_dark_errorContainer = Color(0xFFB3261E)
 val md_theme_dark_onError = Color(0xFF690005)
 val md_theme_dark_onErrorContainer = Color(0xFFFFDAD6)
+val md_theme_dark_background = Color(0xFF1A1C1E)
+val md_theme_dark_onBackground = Color(0xFFE3E2E6)
+val md_theme_dark_surface = Color(0xFF1A1C1E)
+val md_theme_dark_onSurface = Color(0xFFE3E2E6)
+val md_theme_dark_surfaceVariant = Color(0xFF44474E)
+val md_theme_dark_onSurfaceVariant = Color(0xFFC4C6D0)
+val md_theme_dark_outline = Color(0xFF8E9099)
+val md_theme_dark_inverseOnSurface = Color(0xFF1A1C1E)
+val md_theme_dark_inverseSurface = Color(0xFFE3E2E6)
+val md_theme_dark_inversePrimary = Color(0xFF4361EE)
+val md_theme_dark_shadow = Color(0xFF000000)
+val md_theme_dark_surfaceTint = Color(0xFFB6C4FF)
+val md_theme_dark_outlineVariant = Color(0xFF44474E)
+val md_theme_dark_scrim = Color(0xFF000000)
 
-val md_theme_dark_background = Color(0xFF001F2A)
-val md_theme_dark_onBackground = Color(0xFFBFE9FF)
-val md_theme_dark_surface = Color(0xFF001F2A)
-val md_theme_dark_onSurface = Color(0xFFBFE9FF)
+// Custom Colors for Material You
+val seed = Color(0xFF4361EE)
 
-val md_theme_dark_surfaceVariant = Color(0xFF404943)
-val md_theme_dark_onSurfaceVariant = Color(0xFFBFC9C0)
-val md_theme_dark_outline = Color(0xFF8A938D)
-val md_theme_dark_inverseOnSurface = Color(0xFF001F2A)
-val md_theme_dark_inverseSurface = Color(0xFFBFE9FF)
-val md_theme_dark_inversePrimary = Color(0xFF006C51)
-
-// Extra colors for states and feedback
-val Success = Color(0xFF2E7D32)
-val Warning = Color(0xFFFF9800)
-val Info = Color(0xFF0288D1)
+// Additional UX Colors
+val SuccessGreen = Color(0xFF4CAF50)
+val WarningOrange = Color(0xFFFF9800)
+val InfoBlue = Color(0xFF2196F3)
+val TrendyPurple = Color(0xFF9C27B0)
+val EnergeticYellow = Color(0xFFFFEB3B)

@@ -82,33 +82,27 @@ private val LightColorScheme = lightColorScheme(
     inversePrimary = md_theme_light_inversePrimary
 )
 
-// Eski renk adlarını yeni Material You renk sistemine eşleştiren değişkenler
-// Bu değişkenler, mevcut kodu en az değişiklikle çalışır hale getirmek için kullanılır
-
-// Ana renkler
+// Eski renk adlarını yeni Material You renkleriyle eşleştirme
 val Primary = md_theme_light_primary
 val PrimaryLight = md_theme_light_primaryContainer
-val DarkBlue = md_theme_light_primary  // koyu mavi yerine primary rengimizi kullanalım
-val MediumBlue = md_theme_light_secondary
-val LightBlue = md_theme_light_secondaryContainer
-
-// Yeşil tonları
-val DarkGreen = md_theme_light_primary
-val MediumGreen = md_theme_light_primary.copy(alpha = 0.8f)
-val LightGreen = md_theme_light_primaryContainer
-
-// Yüzey renkleri
+val PrimaryDark = md_theme_dark_primary
+val Secondary = md_theme_light_secondary
+val SecondaryLight = md_theme_light_secondaryContainer
+val SecondaryDark = md_theme_dark_secondary
 val Surface = md_theme_light_surface
-val SurfaceLight = md_theme_light_surfaceVariant
-val BackgroundLight = md_theme_light_background
-
-// Metin renkleri
+val SurfaceLight = md_theme_light_background
+val SurfaceDark = md_theme_dark_surface
+val Background = md_theme_light_background
+val BackgroundLight = md_theme_light_surface
+val BackgroundDark = md_theme_dark_background
+val Error = md_theme_light_error
 val TextPrimary = md_theme_light_onSurface
 val TextSecondary = md_theme_light_onSurfaceVariant
-
-// Uyarı renkleri
-val WarningYellow = Warning
-val ErrorRed = md_theme_light_error
+val TextHint = md_theme_light_outline
+val DarkBlue = md_theme_light_primary // 0xFF4361EE - Modern Mavi
+val LightBlue = md_theme_light_primaryContainer // 0xFFDDE2FF - Açık Mavi
+val MediumGreen = SuccessGreen // 0xFF4CAF50 - Yeşil
+val ErrorRed = md_theme_light_error // 0xFFE53935 - Kırmızı
 
 @Composable
 fun FizikTedaviAppTheme(

@@ -1,5 +1,6 @@
 package com.example.fiziktedaviapp.screens.auth
 
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -19,9 +20,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -34,13 +38,14 @@ import com.example.fiziktedaviapp.ui.theme.Primary
 import com.example.fiziktedaviapp.ui.theme.PrimaryLight
 import com.example.fiziktedaviapp.ui.theme.Surface
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(navController: NavController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
     var isLoading by remember { mutableStateOf(false) }
+    var rememberMe by remember { mutableStateOf(false) }
     
     // For form handling and keyboard actions
     val focusManager = LocalFocusManager.current
@@ -55,183 +60,258 @@ fun LoginScreen(navController: NavController) {
         // For now, simulate a login process
         navController.navigate(Screen.Dashboard.route)
     }
+    
+    // Animation
+    val logoScale = remember { Animatable(0.5f) }
+    
+    LaunchedEffect(Unit) {
+        logoScale.animateTo(
+            targetValue = 1f,
+            animationSpec = spring(
+                dampingRatio = Spring.DampingRatioMediumBouncy,
+                stiffness = Spring.StiffnessLow
+            )
+        )
+    }
 
-    Box(
+    BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
-            .background(Surface),
+            .background(SurfaceLight),
         contentAlignment = Alignment.Center
     ) {
+        val maxHeight = this.maxHeight
+        val maxWidth = this.maxWidth
+        val isCompactHeight = maxHeight < 600.dp
+        val padding = if (isCompactHeight) 12.dp else 24.dp
+        val logoSize = if (isCompactHeight) 70.dp else 100.dp
+        
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp)
+                .padding(horizontal = padding)
                 .verticalScroll(scrollState),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Spacer(modifier = Modifier.height(40.dp))
+            if (!isCompactHeight) {
+                Spacer(modifier = Modifier.height(40.dp))
+            } else {
+                Spacer(modifier = Modifier.height(16.dp))
+            }
             
-            // Logo and app name
+            // Logo and app name with animation
             Icon(
                 imageVector = Icons.Outlined.HealthAndSafety,
                 contentDescription = "Logo",
                 tint = Primary,
                 modifier = Modifier
-                    .size(100.dp)
-                    .padding(bottom = 16.dp)
+                    .size(logoSize)
+                    .scale(logoScale.value)
+                    .padding(bottom = if (isCompactHeight) 8.dp else 16.dp)
             )
             
             Text(
                 text = "Fizik Tedavi Uygulaması",
-                style = MaterialTheme.typography.headlineMedium,
+                style = if (isCompactHeight) 
+                    MaterialTheme.typography.titleLarge 
+                else 
+                    MaterialTheme.typography.headlineMedium,
                 color = Primary,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(bottom = 32.dp)
+                modifier = Modifier.padding(bottom = if (isCompactHeight) 16.dp else 32.dp)
             )
 
-            // Email field with improved keyboard handling
-            OutlinedTextField(
-                value = email,
-                onValueChange = { email = it },
-                label = { Text("E-posta") },
-                leadingIcon = { Icon(Icons.Default.Email, contentDescription = "Email") },
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Email,
-                    imeAction = ImeAction.Next
-                ),
-                keyboardActions = KeyboardActions(
-                    onNext = { focusManager.moveFocus(FocusDirection.Down) }
-                ),
-                singleLine = true,
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Primary,
-                    unfocusedBorderColor = PrimaryLight
-                ),
-                shape = RoundedCornerShape(12.dp),
+            // Modern Email Field
+            Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 16.dp),
-                isError = email.isNotEmpty() && !email.contains("@")
-            )
-
-            // Helper text for email validation
-            if (email.isNotEmpty() && !email.contains("@")) {
-                Text(
-                    text = "Lütfen geçerli bir e-posta adresi giriniz",
-                    color = MaterialTheme.colorScheme.error,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, bottom = 8.dp)
-                )
-            }
-
-            // Password field with improved keyboard handling
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Şifre") },
-                leadingIcon = { Icon(Icons.Default.Lock, contentDescription = "Password") },
-                trailingIcon = {
-                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                        Icon(
-                            imageVector = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-                            contentDescription = if (passwordVisible) "Hide password" else "Show password"
-                        )
-                    }
-                },
-                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Password,
-                    imeAction = ImeAction.Done
+                    .padding(bottom = if (isCompactHeight) 8.dp else 16.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surface
                 ),
-                keyboardActions = KeyboardActions(
-                    onDone = {
-                        keyboardController?.hide()
-                        if (email.isNotEmpty() && password.isNotEmpty() && email.contains("@")) {
-                            handleLogin()
-                        }
-                    }
-                ),
-                singleLine = true,
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Primary,
-                    unfocusedBorderColor = PrimaryLight
-                ),
-                shape = RoundedCornerShape(12.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 8.dp),
-                isError = password.isNotEmpty() && password.length < 6
-            )
-            
-            // Helper text for password validation
-            if (password.isNotEmpty() && password.length < 6) {
-                Text(
-                    text = "Şifre en az 6 karakter olmalıdır",
-                    color = MaterialTheme.colorScheme.error,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, bottom = 8.dp)
-                )
-            }
-
-            // Forgot password with improved styling
-            TextButton(
-                onClick = { navController.navigate(Screen.ForgotPassword.route) },
-                modifier = Modifier.align(Alignment.End)
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
             ) {
-                Text(
-                    text = "Şifremi unuttum",
-                    color = Primary,
-                    style = MaterialTheme.typography.labelMedium
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text("E-posta") },
+                    leadingIcon = { 
+                        Icon(
+                            Icons.Default.Email, 
+                            contentDescription = "Email",
+                            tint = Primary
+                        ) 
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Email,
+                        imeAction = ImeAction.Next
+                    ),
+                    keyboardActions = KeyboardActions(
+                        onNext = { focusManager.moveFocus(FocusDirection.Down) }
+                    ),
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Primary,
+                        unfocusedBorderColor = Color.Transparent,
+                        focusedContainerColor = Color.Transparent,
+                        unfocusedContainerColor = Color.Transparent
+                    ),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
                 )
             }
 
-            // Login button with loading state
+            // Modern Password Field
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = if (isCompactHeight) 4.dp else 8.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surface
+                ),
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+            ) {
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = { Text("Şifre") },
+                    leadingIcon = { 
+                        Icon(
+                            Icons.Default.Lock, 
+                            contentDescription = "Password",
+                            tint = Primary
+                        ) 
+                    },
+                    trailingIcon = {
+                        IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                            Icon(
+                                imageVector = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                                contentDescription = if (passwordVisible) "Hide password" else "Show password",
+                                tint = Primary
+                            )
+                        }
+                    },
+                    visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Password,
+                        imeAction = ImeAction.Done
+                    ),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+                            keyboardController?.hide()
+                            if (email.isNotEmpty() && password.isNotEmpty() && email.contains("@") && password.length >= 6) {
+                                handleLogin()
+                            }
+                        }
+                    ),
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Primary,
+                        unfocusedBorderColor = Color.Transparent,
+                        focusedContainerColor = Color.Transparent,
+                        unfocusedContainerColor = Color.Transparent
+                    ),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+            }
+
+            // Row for "Remember me" and "Forgot password"
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = if (isCompactHeight) 8.dp else 16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = rememberMe,
+                        onCheckedChange = { rememberMe = it },
+                        colors = CheckboxDefaults.colors(checkedColor = Primary)
+                    )
+                    Text(
+                        text = "Beni hatırla",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+                
+                TextButton(
+                    onClick = { /* TODO: Implement forgot password flow */ }
+                ) {
+                    Text(
+                        text = "Şifremi Unuttum",
+                        color = Primary,
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
+            }
+
+            // Modern Login Button with Gradient
             Button(
                 onClick = { 
                     if (email.isNotEmpty() && password.isNotEmpty() && email.contains("@") && password.length >= 6) {
                         handleLogin()
                     }
                 },
-                colors = ButtonDefaults.buttonColors(containerColor = Primary),
-                shape = RoundedCornerShape(12.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Primary,
+                    disabledContainerColor = Primary.copy(alpha = 0.6f)
+                ),
+                shape = RoundedCornerShape(16.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
-                    .padding(vertical = 8.dp),
+                    .padding(vertical = 4.dp),
                 enabled = !isLoading && email.isNotEmpty() && password.isNotEmpty() && email.contains("@") && password.length >= 6
             ) {
-                if (isLoading) {
-                    CircularProgressIndicator(
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        modifier = Modifier.size(24.dp)
-                    )
-                } else {
-                    Text(
-                        text = "Giriş Yap",
-                        style = MaterialTheme.typography.labelLarge
-                    )
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    if (isLoading) {
+                        CircularProgressIndicator(
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            modifier = Modifier.size(24.dp),
+                            strokeWidth = 2.dp
+                        )
+                    } else {
+                        Text(
+                            text = "Giriş Yap",
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                 }
             }
 
-            // Register button with improved styling
+            // Modern Register Button
             OutlinedButton(
                 onClick = { navController.navigate(Screen.Register.route) },
                 border = ButtonDefaults.outlinedButtonBorder.copy(width = 1.dp),
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = Primary
+                ),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
-                    .padding(vertical = 8.dp)
+                    .padding(vertical = 4.dp)
             ) {
                 Text(
                     text = "Kayıt Ol",
                     color = Primary,
-                    style = MaterialTheme.typography.labelLarge
+                    style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.Medium
                 )
             }
 
