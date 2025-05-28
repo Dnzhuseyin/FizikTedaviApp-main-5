@@ -58,8 +58,14 @@ fun LoginScreen(navController: NavController) {
         isLoading = true
         keyboardController?.hide()
         // TODO: Validate and login
-        // For now, simulate a login process
-        navController.navigate(Screen.Dashboard.route)
+        // For now, simulate a login process and delay to show loading
+        // Wait 1 second to simulate network call
+        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+            navController.navigate(Screen.Dashboard.route) {
+                // Pop up to the start destination to avoid building up a large stack of destinations
+                popUpTo(Screen.Login.route) { inclusive = true }
+            }
+        }, 1000)
     }
     
     // Animation
@@ -260,7 +266,9 @@ fun LoginScreen(navController: NavController) {
             // Modern Login Button with Gradient
             Button(
                 onClick = { 
-                    if (email.isNotEmpty() && password.isNotEmpty() && email.contains("@") && password.length >= 6) {
+                    // Simplify validation for demo purposes
+                    if (!isLoading) {
+                        // Always allow login for demo purposes, without strict validation
                         handleLogin()
                     }
                 },
@@ -273,7 +281,8 @@ fun LoginScreen(navController: NavController) {
                     .fillMaxWidth()
                     .height(56.dp)
                     .padding(vertical = 4.dp),
-                enabled = !isLoading && email.isNotEmpty() && password.isNotEmpty() && email.contains("@") && password.length >= 6
+                // Make button always enabled for demo
+                enabled = !isLoading
             ) {
                 Box(
                     modifier = Modifier.fillMaxSize(),
