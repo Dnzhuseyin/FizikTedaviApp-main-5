@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 
 // Ekran boyutu kategorileri
@@ -97,9 +98,9 @@ fun ResponsivePage(
     
     // ContentPadding'i ekran boyutuna göre ayarla
     val finalPadding = PaddingValues(
-        start = contentPadding.calculateStartPadding(androidx.compose.ui.unit.LayoutDirection.Ltr) + horizontalPadding,
+        start = contentPadding.calculateStartPadding(LayoutDirection.Ltr) + horizontalPadding,
         top = contentPadding.calculateTopPadding() + statusBarPadding,
-        end = contentPadding.calculateEndPadding(androidx.compose.ui.unit.LayoutDirection.Ltr) + horizontalPadding,
+        end = contentPadding.calculateEndPadding(LayoutDirection.Ltr) + horizontalPadding,
         bottom = contentPadding.calculateBottomPadding() + navigationBarPadding
     )
     
