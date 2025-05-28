@@ -74,26 +74,18 @@ fun BottomNavigationBar(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    // Check if the current route should show the bottom navigation
-    val routesWithoutBottomNav = listOf(
-        Screen.Login.route,
-        Screen.Register.route,
-        Screen.ForgotPassword.route,
-        Screen.Onboarding.route
-    )
-    
-    val currentRoute = currentDestination?.route
-    val shouldShowBottomNav = currentRoute != null && !routesWithoutBottomNav.contains(currentRoute)
+    // Bu kontrolü kaldırıyoruz, çünkü MainActivity'de zaten yapılıyor
+    // Bottom nav bar görünürlüğü sadece visible parametresine bağlı olacak
 
     AnimatedVisibility(
-        visible = visible && shouldShowBottomNav,
+        visible = visible,
         enter = slideInVertically(initialOffsetY = { it }),
         exit = slideOutVertically(targetOffsetY = { it })
     ) {
         NavigationBar(
-            modifier = Modifier,
+            modifier = Modifier.navigationBarsPadding(),
             tonalElevation = 8.dp,
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.primaryContainer
         ) {
             navItems.forEach { item ->
                 val selected = currentDestination?.hierarchy?.any { it.route == item.route } == true

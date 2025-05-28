@@ -53,7 +53,9 @@ fun FizikTedaviApp() {
         Screen.ForgotPassword.route,
         Screen.Onboarding.route,
         Screen.ExerciseDetail.route, // This is a pattern route, needs special handling
-        "exercise_detail/" // Beginning of parameterized route
+        "exercise_detail/", // Beginning of parameterized route
+        Screen.TherapistCall.route, // Terapist arama ekranı
+        Screen.Settings.route // Ayarlar ekranı
     )
     
     // Check if bottom navigation should be visible based on current route
