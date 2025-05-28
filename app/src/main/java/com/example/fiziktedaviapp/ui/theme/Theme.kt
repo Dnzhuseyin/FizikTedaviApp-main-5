@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.font.FontWeight
 import androidx.core.view.WindowCompat
 
 // Modern dark theme color scheme using Material You colors
@@ -80,6 +81,34 @@ private val LightColorScheme = lightColorScheme(
     inverseSurface = md_theme_light_inverseSurface,
     inversePrimary = md_theme_light_inversePrimary
 )
+
+// Eski renk adlarını yeni Material You renk sistemine eşleştiren değişkenler
+// Bu değişkenler, mevcut kodu en az değişiklikle çalışır hale getirmek için kullanılır
+
+// Ana renkler
+val Primary = md_theme_light_primary
+val PrimaryLight = md_theme_light_primaryContainer
+val DarkBlue = md_theme_light_primary  // koyu mavi yerine primary rengimizi kullanalım
+val MediumBlue = md_theme_light_secondary
+val LightBlue = md_theme_light_secondaryContainer
+
+// Yeşil tonları
+val DarkGreen = md_theme_light_primary
+val MediumGreen = md_theme_light_primary.copy(alpha = 0.8f)
+val LightGreen = md_theme_light_primaryContainer
+
+// Yüzey renkleri
+val Surface = md_theme_light_surface
+val SurfaceLight = md_theme_light_surfaceVariant
+val BackgroundLight = md_theme_light_background
+
+// Metin renkleri
+val TextPrimary = md_theme_light_onSurface
+val TextSecondary = md_theme_light_onSurfaceVariant
+
+// Uyarı renkleri
+val WarningYellow = Warning
+val ErrorRed = md_theme_light_error
 
 @Composable
 fun FizikTedaviAppTheme(

@@ -68,10 +68,7 @@ fun ModernPrimaryButton(
     val isPressed by interactionSource.collectIsPressedAsState()
     
     // Basıldığında buton etkisi için animasyon
-    val scale by animateFloat(
-        targetValue = if (isPressed) 0.98f else 1f,
-        label = "Scale Animation"
-    )
+    val scale = if (isPressed) 0.98f else 1f
     
     Button(
         onClick = onClick,
@@ -263,8 +260,7 @@ fun ActionButton(
                 animationSpec = infiniteRepeatable(
                     animation = tween(1000, easing = LinearEasing),
                     repeatMode = RepeatMode.Restart
-                ),
-                label = "Loading Animation"
+                )
             )
             
             CircularProgressIndicator(
@@ -314,8 +310,7 @@ fun PulsatingButton(
                 animationSpec = infiniteRepeatable(
                     animation = tween(1000, easing = FastOutSlowInEasing),
                     repeatMode = RepeatMode.Reverse
-                ),
-                label = "Pulse Scale"
+                )
             )
             
             val alpha by infiniteTransition.animateFloat(
@@ -324,8 +319,7 @@ fun PulsatingButton(
                 animationSpec = infiniteRepeatable(
                     animation = tween(1000, easing = FastOutSlowInEasing),
                     repeatMode = RepeatMode.Reverse
-                ),
-                label = "Pulse Alpha"
+                )
             )
             
             // Pulsating background

@@ -97,9 +97,9 @@ fun ResponsivePage(
     
     // ContentPadding'i ekran boyutuna göre ayarla
     val finalPadding = PaddingValues(
-        start = contentPadding.calculateStartPadding(layoutDirection = androidx.compose.ui.unit.LayoutDirection.Ltr) + horizontalPadding,
+        start = contentPadding.calculateStartPadding(androidx.compose.ui.unit.LayoutDirection.Ltr) + horizontalPadding,
         top = contentPadding.calculateTopPadding() + statusBarPadding,
-        end = contentPadding.calculateEndPadding(layoutDirection = androidx.compose.ui.unit.LayoutDirection.Ltr) + horizontalPadding,
+        end = contentPadding.calculateEndPadding(androidx.compose.ui.unit.LayoutDirection.Ltr) + horizontalPadding,
         bottom = contentPadding.calculateBottomPadding() + navigationBarPadding
     )
     
